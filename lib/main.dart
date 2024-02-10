@@ -4,6 +4,7 @@ import 'package:newssnack/view/home.dart';
 void main() {
   runApp(
    const MaterialApp(
+    debugShowCheckedModeBanner: false,
       title: "Newsify",
       home: homepage(),
     ));

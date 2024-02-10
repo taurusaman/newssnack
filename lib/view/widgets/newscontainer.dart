@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:newssnack/view/detailview.dart';
 
 class NewsContainer extends StatelessWidget {
   String imgurl;
   String newsHead;
   String newDes;
   String newsurl;
-  String newscontent;
+  String newscnt;
 
   NewsContainer(
       {super.key,
       required this.imgurl,
       required this.newDes,
-      required this.newscontent,
+      required this.newscnt,
       required this.newsHead,
       required this.newsurl});
 
@@ -34,7 +35,9 @@ class NewsContainer extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Text(
-              newsHead,
+              newsHead.length > 70
+                  ? "${newsHead.substring(0, 50)}..."
+                  : newsHead,
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
           ),
@@ -51,9 +54,11 @@ class NewsContainer extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Text(
-                newscontent,
-                style: TextStyle(fontSize: 14, color: Colors.black),
-              ),
+              newscnt.length > 250
+                  ? newscnt.substring(0, 250)
+                  : "${newscnt.substring(0, newscnt.length - 15)}...",
+              style: TextStyle(fontSize: 14, color: Colors.black),
+            ),
           ),
           Spacer(),
           Row(
@@ -63,13 +68,20 @@ class NewsContainer extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: ElevatedButton(
                     onPressed: () {
-                      print("Going to $newsurl");
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                DetailViewScreen(newsurl: newsurl),
+                          ));
                     },
                     child: Text("Read More")),
               ),
             ],
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
         ],
       ),
     );
