@@ -38,6 +38,7 @@ class FetchNews {
     final _random = new Random();
     var sourceID = sourcesId[_random.nextInt(sourcesId.length)];
     print(sourceID);
+
     Response response = await get(Uri.parse(
         "https://newsapi.org/v2/top-headlines?sources=$sourceID&apiKey=17af658adca94c50a720ff150eda96c3"));
 
@@ -46,7 +47,7 @@ class FetchNews {
    // print(articles);
 
     final _Newrandom = new Random();
-    var myArticle = articles[_random.nextInt(articles.length)];
+    var myArticle = articles[_Newrandom.nextInt(articles.length)];
     print(myArticle);
   }
 }

@@ -5,11 +5,13 @@ class NewsContainer extends StatelessWidget {
   String newsHead;
   String newDes;
   String newsurl;
+  String newscontent;
 
   NewsContainer(
       {super.key,
       required this.imgurl,
       required this.newDes,
+      required this.newscontent,
       required this.newsHead,
       required this.newsurl});
 
@@ -43,8 +45,15 @@ class NewsContainer extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Text(
               newDes,
-              style: TextStyle(fontSize: 16),
+              style: TextStyle(fontSize: 12, color: Colors.black45),
             ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Text(
+                newscontent,
+                style: TextStyle(fontSize: 14, color: Colors.black),
+              ),
           ),
           Spacer(),
           Row(
